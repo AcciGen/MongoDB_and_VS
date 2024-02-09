@@ -14,10 +14,12 @@ namespace VSMongoDB.Data
         {
             this.mongoClient = new MongoClient("mongodb://localhost:27017");
 
-            foreach (var db in mongoClient.ListDatabases().ToList())
-            {
-                Console.WriteLine(db);
-            }
+            var gdb = mongoClient.GetDatabase("Lesson");
+        }
+
+        public IMongoDatabase GetDatabaseByName(string dbName)
+        {
+            return mongoClient.GetDatabase(dbName);
         }
     }
 }
