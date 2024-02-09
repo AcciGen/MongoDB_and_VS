@@ -6,14 +6,13 @@ namespace VSMongoDB
 {
     internal class Program
     {
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             var dbContext = new DbContext();
 
-            IMongoDatabase database = dbContext.GetDatabaseByName("Lesson");
+            IMongoCollection<BsonDocument>? collection = dbContext.GetMongoCollection("Lesson", "dotNet");
 
-            List<BsonDocument>? collections = database.ListCollections().ToList();
-            Console.WriteLine(collections);
+            collection.InsertManyAsync()
         }
     }
 }
