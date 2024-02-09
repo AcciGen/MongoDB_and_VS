@@ -43,5 +43,17 @@ namespace VSMongoDB.Data
         {
             return database.GetCollection<BsonDocument>(name: collectionName);
         }
+
+        public IMongoCollection<BsonDocument> GetMongoCollection(string databaseName, string collectionName)
+        {
+            IMongoDatabase database = this.GetDatabaseByName(databaseName);
+
+            return database.GetCollection<BsonDocument>(name: collectionName);
+        }
+
+        public async Task InsertOneDocAsync(IMongoCollection<BsonDocument> collection, BsonDocument doc)
+        {
+            await collection.InsertOneAsync(doc);
+        }
     }
 }

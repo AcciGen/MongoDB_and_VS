@@ -12,7 +12,21 @@ namespace VSMongoDB
 
             IMongoCollection<BsonDocument>? collection = dbContext.GetMongoCollection("Lesson", "dotNet");
 
-            collection.InsertManyAsync()
+            FilterDefinition<BsonDocument> filter = Builders<BsonDocument>.Filter.Empty;
+            BsonDocument bsonElements = new BsonDocument()
+            {
+                {"name", "Nuriddin" },
+                {"location", new BsonDocument
+                {
+                    {"lon",  123},
+                    {"lat", -123}
+                },
+                {"" }
+
+            };
+            dbContext.InsertOneDocAsync()
+
+            Console.WriteLine(i);
         }
     }
 }
