@@ -6,7 +6,7 @@ namespace VSMongoDB
 {
     internal class Program
     {
-        private static async Task Main(string[] args)
+        private static void Main(string[] args)
         {
             var dbContext = new DbContext();
 
@@ -17,16 +17,15 @@ namespace VSMongoDB
             {
                 {"name", "Nuriddin" },
                 {"location", new BsonDocument
-                {
-                    {"lon",  123},
-                    {"lat", -123}
+                    {
+                        {"lon",  123},
+                        {"lat", -123}
+                    }
                 },
-                {"" }
-
+                {"gender", "real male" }
             };
             dbContext.InsertOneDocAsync()
 
-            Console.WriteLine(i);
         }
     }
 }
